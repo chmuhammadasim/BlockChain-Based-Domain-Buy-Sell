@@ -31,6 +31,7 @@ contract ETHDaddy is ERC721{
     }
 
     function mint(uint256 _id)public payable {
+        domains[_id].isOwned = true;
         _safeMint(msg.sender,_id);
     }
 

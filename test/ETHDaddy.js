@@ -63,6 +63,11 @@ describe("ETHDaddy", () => {
       expect(owner).to.be.equal(owner1.address)
     })
 
+    it("Updates the domain status",async () => {
+      const owner = await ethDaddy.getDomains(ID)
+      expect(owner.isOwned).to.be.equal(true)
+    })
+
     it("Updates the Contract Balance",async () => {
       const result = await ethDaddy.getBalance( )
       expect(result).to.be.equal(AMOUNT)
