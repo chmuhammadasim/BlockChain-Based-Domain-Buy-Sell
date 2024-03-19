@@ -39,6 +39,10 @@ describe("ETHDaddy", () => {
       let result = await ethDaddy.maxSupply()
       expect(result).to.equal(1)
     })
+    it('Returns the total Supply',async () => {
+      let result = await ethDaddy.totalSupply()
+      expect(result).to.equal(0)
+    })
   })
   describe("Domain",()=>{
     it("Returns domain attributes",async () => {
