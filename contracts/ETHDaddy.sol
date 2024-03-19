@@ -30,11 +30,15 @@ contract ETHDaddy is ERC721{
         domains[maxSupply] = Domain(_name, _cost, false);
     }
 
-    function mint(uint256 _id)public {
+    function mint(uint256 _id)public payable {
         _safeMint(msg.sender,_id);
     }
 
     function getDomains(uint256 _id) public view returns(Domain memory) {
         return domains[_id];
+    }
+
+    function getBalance() public view returns(uint256){
+        return address(this).balance;
     }
 }

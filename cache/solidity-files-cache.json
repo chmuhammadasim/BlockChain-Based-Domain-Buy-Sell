@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\boybr\\OneDrive\\Documents\\GitHub\\BlockChainBasedDomainBuySell\\contracts\\ETHDaddy.sol": {
-      "lastModificationDate": 1710847938891,
-      "contentHash": "717f10d17f3572881c6f5512c3d6b50d",
+      "lastModificationDate": 1710848689693,
+      "contentHash": "d1420b2bfa4eee394cbb677f4efde832",
       "sourceName": "contracts/ETHDaddy.sol",
       "solcConfig": {
         "version": "0.8.17",

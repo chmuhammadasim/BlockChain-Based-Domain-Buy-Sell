@@ -54,13 +54,18 @@ describe("ETHDaddy", () => {
     const AMOUNT = ethers.utils.parseUnits('10', 'ether')
 
     beforeEach( async()=>{
-      const transactions = await ethDaddy.connect(owner1).mint(ID)
+      const transactions = await ethDaddy.connect(owner1).mint(ID,{value:AMOUNT})
       await transactions.wait()
     })
 
     it("Updates the Owner",async () => {
       const owner = await ethDaddy.ownerOf(ID)
       expect(owner).to.be.equal(owner1.address)
+    })
+
+    it("Updates the Contract Balance",async () => {
+      const result = await ethDaddy.getBalance( )
+      expect(result).to.be.equal(AMOUNT)
     })
   })
 })
