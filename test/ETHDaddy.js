@@ -77,4 +77,28 @@ describe("ETHDaddy", () => {
       expect(result).to.be.equal(AMOUNT)
     })
   })
+  describe('With Drawing', () => {
+    const ID = 1
+    const AMOUNT = ethers.utils.parseUnits('10', 'ether')
+    let balanceBefore
+    beforeEach( async()=>{
+      balanceBefore = await ethers.provider.getBalance(deployer.address)
+
+      let transactions = await ethDaddy.connect(owner1).mint(ID,{value:AMOUNT})
+      await transactions.wait()
+
+      transactions = await ethDaddy.connect(deployer).withDraw()
+      await transactions.wait()
+    })
+
+    it('Updates the owner balance', async () => {
+      const balanceAfter = await ethers.provider.getBalance(deployer.address)
+      expect(balanceAfter).to.be.greaterThan(balanceBefore)
+    })
+
+    it('Updates the contract balance', async () => {
+      const result = await ethDaddy.getBalance()
+      expect(result).to.be.equal(0)
+    })
+   })
 })
