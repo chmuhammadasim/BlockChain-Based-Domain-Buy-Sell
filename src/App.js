@@ -14,34 +14,33 @@ import config from './config.json';
 
 function App() {
   const [account, setAccount] = useState(null);
-  const loadBlockChainData = async()=>{
+  const loadBlockChainData = async () => {
     //  const accounts = await window.ethereum.request({'method':'eth_requestAccounts'})
     //  const account = ethers.utils.getAddress(accounts[0])
     //  setAccount(account);
-    window.ethereum.on('accountsChanged',  async()=>{
-      const accounts = await window.ethereum.request({'method':'eth_requestAccounts'})
+    window.ethereum.on('accountsChanged', async () => {
+      const accounts = await window.ethereum.request({ 'method': 'eth_requestAccounts' })
       const account = ethers.utils.getAddress(accounts[0])
       setAccount(account);
     });
-  }  
-  useEffect(()=>{
+  }
+  useEffect(() => {
     loadBlockChainData()
-  },[]);
+  }, []);
 
   return (
-    <div>
-      <Navigation account={account} setAccount={setAccount} />
-      <Search />
-      <div className='cards__section'>
-        <h2 className='cards__title'>Welcome to ETH Daddy</h2>
-        <p className='cards__description'>Own your custom username, use it across services, and
-          be able to store an avatar and other profile data.</p>
+      <div>
+        <Navigation account={account} setAccount={setAccount} />
+        <Search />
+        <div className='cards__section'>
+          <h2 className='cards__title'>Welcome to ETH Daddy</h2>
+          <p className='cards__description'>Own your custom username, use it across services, and
+            be able to store an avatar and other profile data.</p>
           <hr />
-          <div className='cards'> 
-
+          <div className='cards'>
           </div>
+        </div>
       </div>
-    </div>
   );
 }
 
